@@ -1,3 +1,13 @@
+@use "sass:map";
+
+@import "../../../../styles/common";
+@import "../../../../styles/variables";
+
+.manage-users {
+  min-height: 100vh;
+  background-color: map.get($secondary, 4);
+}
+
 .columns {
   display: flex;
   gap: 24px;
@@ -10,6 +20,11 @@
   &__right {
     margin-top: 58px;
     flex: 1;
+
+    &:has(.user-view),
+    &:has(.explanation) {
+      @extend .block;
+    }
   }
 }
 

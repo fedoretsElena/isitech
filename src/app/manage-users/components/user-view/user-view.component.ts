@@ -46,6 +46,10 @@ export class UserViewComponent implements OnInit, OnDestroy {
               tap((user: User | null) => {
                 if (!user) {
                   this.router.navigate(['./edit', id, 'not-found']);
+                  this.showToast(
+                    `User with id ${id} does not exist`,
+                    ToastType.Fail
+                  );
                 }
               })
             ),
@@ -71,10 +75,7 @@ export class UserViewComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.usersService.delete(userId).subscribe(() => {
       this.usersService.updateListSubject.next(null);
-      this.toastService.show({
-        text: 'User was successfully deleted.',
-        type: ToastType.Success,
-      });
+      this.showToast('User was successfully deleted.');
       this.router.navigate(['']);
     });
   }
@@ -88,18 +89,12 @@ export class UserViewComponent implements OnInit, OnDestroy {
         next: (user: User) => {
           this.usersService.updateListSubject.next(null);
           this.serverErrors = {};
-          this.toastService.show({
-            text: 'User was successfully created.',
-            type: ToastType.Success,
-          });
+          this.showToast('User was successfully created.');
           this.router.navigate(['./', 'edit', user.id]);
         },
         error: (errors: ServerErrors) => {
           this.serverErrors = { ...errors };
-          this.toastService.show({
-            text: 'Validation failed.',
-            type: ToastType.Fail,
-          });
+          this.showToast('Validation failed.', ToastType.Fail);
         },
       });
   }
@@ -113,18 +108,19 @@ export class UserViewComponent implements OnInit, OnDestroy {
         next: () => {
           this.usersService.updateListSubject.next(null);
           this.serverErrors = {};
-          this.toastService.show({
-            text: 'User was successfully updated.',
-            type: ToastType.Success,
-          });
+          this.showToast('User was successfully updated.');
         },
         error: (errors: ServerErrors) => {
           this.serverErrors = { ...errors };
-          this.toastService.show({
-            text: 'Validation failed.',
-            type: ToastType.Fail,
-          });
+          this.showToast('Validation failed.', ToastType.Fail);
         },
       });
+  }
+
+  private showToast(text: string, type: ToastType = ToastType.Success): void {
+    this.toastService.show({
+      text,
+      type,
+    });
   }
 }
