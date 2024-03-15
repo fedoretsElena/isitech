@@ -1,0 +1,40 @@
+@import "./../variables";
+
+.button {
+  min-width: 120px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: $borderRadius;
+  border: none;
+  padding: 12px 20px;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &--primary {
+    @extend .button;
+
+    color: $light;
+    background-color: $primary;
+
+    &:not(:disabled):hover {
+      background-color: darken($color: $primary, $amount: 10);
+    }
+  }
+
+  &--danger {
+    @extend .button;
+
+    color: $light;
+    background-color: $danger;
+
+    &:not(:disabled):hover {
+      background-color: darken($color: $danger, $amount: 10);
+    }
+  }
+}

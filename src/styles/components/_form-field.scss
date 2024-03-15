@@ -1,0 +1,63 @@
+@use "sass:map";
+
+@import "./../variables";
+
+$form-field-h-padding: 16px;
+$form-field-v-padding: 14px;
+
+.form-field {
+  position: relative;
+  padding-bottom: 18px;
+
+  &__label {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  &__input,
+  &__select {
+    display: block;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 13px;
+    border: 1px solid map.get($secondary, 2);
+    background-color: map.get($secondary, 2);
+
+    &:focus-within {
+      border-color: $primary;
+      outline: none;
+    }
+
+    &--invalid {
+      border-color: $danger;
+    }
+  }
+
+  &__input {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0 $form-field-h-padding;
+
+    &__block {
+      padding: $form-field-v-padding 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+  }
+
+  &__select {
+    padding: $form-field-v-padding $form-field-h-padding;
+  }
+
+  &__errors {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: $danger;
+    font-size: 13px;
+  }
+}

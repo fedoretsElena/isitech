@@ -1,0 +1,40 @@
+@use "sass:map";
+
+@import "../../../../styles/variables";
+
+.users-list {
+  position: relative;
+  min-height: 400px;
+  height: calc(100% - 58px);
+
+  &__header {
+    padding: 16px 0;
+    color: $light-text;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  &__item {
+    display: block;
+    margin: 2px 0;
+    padding: 16px 0;
+    font-size: 13px;
+    background-color: map.get($secondary, 1);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr) 1fr;
+
+    & > * {
+      padding: 0 16px;
+    }
+  }
+}
+
+.user {
+  &:hover,
+  &--active {
+    background-color: map.get($secondary, "5");
+  }
+}

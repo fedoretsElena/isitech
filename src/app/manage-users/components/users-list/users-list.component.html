@@ -1,0 +1,20 @@
+<section class="users-list block">
+  <div class="users-list__header users-list__grid">
+    <h4>Username</h4>
+    <h4>First name</h4>
+    <h4>Last name</h4>
+    <h4>Email</h4>
+    <h4>Type</h4>
+  </div>
+
+  <a *ngFor="let user of users$ | async; trackBy: trackById" [routerLink]="'./edit/' + user.id"
+    routerLinkActive="user--active" class="users-list__item users-list__grid user">
+    <span>{{user.username}}</span>
+    <span>{{user.firstName}}</span>
+    <span>{{user.lastName}}</span>
+    <span class="text-truncate">{{user.email}}</span>
+    <span>{{user.userType}}</span>
+  </a>
+
+  <app-loader *ngIf="loading"></app-loader>
+</section>

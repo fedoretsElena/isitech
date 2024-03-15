@@ -1,0 +1,20 @@
+@import "../../../../styles/variables";
+
+.toast {
+  position: relative;
+  color: $light;
+  padding: 20px 26px;
+  width: 281px;
+  font-size: 13px;
+  border-radius: $borderRadius;
+
+  &--success {
+    background-color: $success;
+    box-shadow: 0 10px 15px rgba($success, 0.36);
+  }
+
+  &--fail {
+    background-color: $danger;
+    box-shadow: 0 10px 15px rgba($danger, 0.36);
+  }
+}

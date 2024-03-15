@@ -1,0 +1,20 @@
+<section class="user-view block">
+  <div class="user-view__header">
+    <h3 class="user-view__header__title">
+      @if (user) {
+      {{user.firstName}} {{user.lastName}}
+      }
+      @else {
+      Create new user
+      }
+    </h3>
+
+    <a class="link-icon" routerLink="">
+      &#10005;
+    </a>
+  </div>
+
+  <app-user-form [user]="user" [serverErrors]="serverErrors" (delete)="onDelete($event)"
+    (save)="onSave($event)"></app-user-form>
+  <app-loader *ngIf="loading"></app-loader>
+</section>

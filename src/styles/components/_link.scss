@@ -1,0 +1,13 @@
+@import "./../variables";
+
+.link {
+  color: $primary;
+
+  &,
+  &-icon {
+    & :not(:disabled):hover {
+      cursor: pointer;
+      color: darken($color: $primary, $amount: 10);
+    }
+  }
+}

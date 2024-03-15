@@ -1,0 +1,8 @@
+<div class="form-field">
+  <label class="form-field__label">{{label}}@if(required){*}</label>
+  <div class="form-field__input">
+    <ng-content></ng-content>
+    <input class="form-field__input__block" [type]="type" [formControl]="control" />
+  </div>
+  <div class="form-field__errors text-truncate"></div>
+</div>

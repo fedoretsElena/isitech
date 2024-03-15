@@ -1,0 +1,20 @@
+.user-form {
+  &__footer {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:has(> :last-child:nth-child(1)) {
+      justify-content: center;
+    }
+
+    &__delete-button {
+      margin-right: 8px;
+    }
+  }
+}
+
+.email-icon {
+  color: grey;
+}

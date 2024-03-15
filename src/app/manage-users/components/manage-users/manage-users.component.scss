@@ -1,0 +1,19 @@
+.columns {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+
+  &__left {
+    flex: 3;
+  }
+
+  &__right {
+    margin-top: 58px;
+    flex: 1;
+  }
+}
+
+.create-user-button {
+  margin: 0 0 16px auto;
+  display: block;
+}

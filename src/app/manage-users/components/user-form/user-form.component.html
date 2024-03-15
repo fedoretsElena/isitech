@@ -1,0 +1,25 @@
+<form class="user-form" [formGroup]="userForm">
+  <app-input label="Username" [control]="userForm.get('username')" appCheckValidity></app-input>
+
+  <app-input label="First name" [control]="userForm.get('firstName')" appCheckValidity></app-input>
+
+  <app-input label="Last name" [control]="userForm.get('lastName')" appCheckValidity></app-input>
+
+<app-input label="Email" type="email" [control]="userForm.get('email')" appCheckValidity><span class="email-icon">&#64;</span></app-input>
+
+  <app-select label="Type" [control]="userForm.get('userType')" [options]="typesOptions"></app-select>
+
+  <app-input label="Password" type="password" [control]="userForm.get('password')" appCheckValidity></app-input>
+
+  <app-input label="Repeat password" type="password" [control]="userForm.get('password2')" appCheckValidity></app-input>
+
+  <div class="user-form__footer">
+    <button *ngIf="user" class="user-form__footer__delete-button button button--danger" (click)="onDelete()">
+      Delete
+    </button>
+
+    <button class="button button--primary" [disabled]="userForm.invalid" (click)="onSave()">
+      {{user ? 'Save' : 'Create'}}
+    </button>
+  </div>
+</form>
